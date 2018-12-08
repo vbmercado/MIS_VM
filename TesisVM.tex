@@ -1,0 +1,610 @@
+% % 
+% Plan de Tesis Viviana Mercado - 2018
+%\author{Viviana Mercado}
+%
+%\documentclass[10pt,openright,a4paper]{report}
+%\documentclass[12pt,oneside,letterpaper]{report}
+\documentclass[12pt, runningheads,a4]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{epsfig}
+\usepackage{graphicx} %graficos
+\usepackage{enumerate}
+\graphicspath{ {imagen/} }%En que carpeta estan las imagenes
+\usepackage{color}
+%\usepackage[right=2cm,left=3cm,top=2cm,bottom=2cm,headsep=0cm,footskip=0.5cm]{geometry}
+\usepackage{hyperref}
+%[pdfpagelabels]
+\usepackage[paperheight=29.7cm, paperwidth=21cm, top=2cm, left=3cm,
+right=2.5cm, bottom=2cm]{geometry}
+\usepackage{appendix}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{natbib}
+\usepackage[most]{tcolorbox}
+\usepackage{subcaption}
+\usepackage{url}
+
+
+%\usepackage{cite} % para contraer referencias
+%\usepackage[toc,page]{appendix}
+%\usepackage[nottoc]{tocbibind}
+%\usepackage[utf8]{inputenc} %Paquete para escribir acentos y otros simbolos directamente
+%\usepackage[ansinew]{inputenc}
+%\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+%\usepackage[right=2cm,left=3cm,top=2cm,bottom=2cm,headsep=0cm,footskip=0.5cm]{geometry}
+%\usepackage[latin1]{inputenc}% acentos sin codigo
+%\usepackage{subfigure} % subfiguras
+%\usepackage[sort&compress]{natbib}
+%\usepackage[nottoc]{tocbibind}
+%\usepackage[dvips]{graphicx} %figuras
+%\usepackage{cite} %para contraer referencias
+
+%------
+%\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Utilice el backend bibtex con el estilo de citación authoryear (que se asemeja a APA)
+
+%\addbibresource{bibliografia.bib} % Archivo de *.bib
+
+%\usepackage[autostyle=true]{csquotes} % Requerido para generar citas dependientes del idioma en la bibliografía.
+%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------
+% DOCUMENTO
+%------------------------------------------------------------------------- 
+%-------------------------------------------------------------------------
+
+\begin{document}
+%\maketitle	
+% \Indice a Indice
+\renewcommand * \listfigurename {Indice de Figuras}
+\renewcommand{\listtablename}{Indice de Tablas}
+\renewcommand{\contentsname}{Indice General}	
+%-------------------------	
+\thispagestyle{empty}
+
+	\begin{center}
+	UNIVERSIDAD NACIONAL DE LA PATAGONIA AUSTRAL\\
+	UNIDAD ACADÉMICA CALETA OLIVIA\\
+	INSTITUTO DE TECNOLOGÍA APLICADA\\
+\vspace*{2 cm}
+	
+\begin{figure}[h]
+	\centering
+	\includegraphics[height= 3.9 cm] {imagen/unpa.eps}
+ \end{figure}
+%%
+\vspace{3 cm}
+
+\textbf{EL PROCESO DE EXTRACCIÓN DE CONOCIMIENTO EN LA DETERMINACIÓN DEL PERFIL DEL AUTOR Y LA ATRIBUCIÓN DE AUTORÍA}\\
+
+\vspace{5 cm}
+TESISTA: ING. VIVIANA BEATRIZ MERCADO
+
+\vfill
+2018
+\end{center}
+
+%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------
+
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+	{UNIVERSIDAD NACIONAL DE LA PATAGONIA AUSTRAL\\
+	UNIDAD ACADÉMICA CALETA OLIVIA\\
+	INSTITUTO DE TECNOLOGÍA APLICADA}\\
+\vskip 3 cm
+
+TESIS PARA OPTAR AL TITULO MAESTRÍA DE INFORMÁTICA Y SISTEMAS\\
+\vskip 3 cm
+
+TESISTA: ING. VIVIANA BEATRIZ MERCADO
+
+\vskip 2.8cm
+
+\end{center}
+
+\begin{flushleft}
+\begin{tabular}{llccc}
+
+& \footnotesize{FIRMA} \\[0.9 cm]
+
+TUTOR \\
+DR. MARCELO ERRECALDE & : %& \dotrule{1.4cm} & \dotrule{2.8cm} & \dotrule{5.5cm} 
+................................
+\\[.9cm]
+\\
+CO-TUTOR  \\
+DRA. ANDREA VILLAGRA & : %& \dotrule{1.4cm} & \dotrule{2.8cm} & \dotrule{5.5cm} 
+................................
+\\[.9cm]
+\\
+
+
+\end{tabular}
+\end{flushleft}
+
+\vskip .5cm
+
+\begin{center}
+%TESIS PARA OPTAR AL TITULO DE MAESTRIA EN INFORMATICA Y SISTEMAS \\
+
+\vfill
+CALETA OLIVIA (SANTA CRUZ)\\
+%ENERO 
+\date{2018}
+
+\end{center}
+
+%------------------------------------------------------------------------
+%------------------------------------------------------------------------
+%	DEDICATORIA
+%------------------------------------------------------------------------
+%pagestyle{empty}
+%\chapter*{}
+%\begin{flushright}
+%	\textit{DEDICATORIA}
+%\end{flushright}
+%------------------------------------------------------------------------
+%	AGRADECIMIENTOS
+%------------------------------------------------------------------------
+%\chapter*{Agradecimientos}
+%\markboth{AGRADECIMIENTOS23}{AGRADECIMIENTOS} % encabezado 
+%¡Muchas gracias a todos!
+%------------------------------------------------------------------------
+%	PREFACIO
+%------------------------------------------------------------------------
+%\chapter*{Prefacio}
+%\pagestyle{plain}
+%\markboth{PREFACIO23}{PREFACIO} % encabezado 
+%PUEDEN QUITAR ESTA PARTE
+%-------------------------------------------------------------------------
+\newpage
+%\thispagestyle{empty}
+\pagenumbering{arabic}
+%------------------------------------------------------------------------
+%------------------------------------------------------------------------
+
+\tableofcontents
+\thispagestyle{empty}
+%-------------------------------------------------------------------------
+%------------------------------------------------------------------------
+\newpage
+\pagenumbering{arabic}
+
+
+\chapter{Introducción} \label{cap.1}
+
+%Determinar el Perfil del Autor es la tarea de predecir las características del autor de un texto, como edad, género, personalidad, idioma nativo, etc. Esta es una tarea de importancia creciente debido a sus aplicaciones potenciales en seguridad, crimen y marketing, entre otros. Una de las principales dificultades en este campo es la falta de colecciones de texto confiables (Corpus) para entrenar y probar derivaciones a partir de clasificadores automáticamente, en particular en idiomas específicos como el español. 
+%En este contexto, éste trabajo propone trabajar con artículos periodísticos argentinos de distintas fuentes (blogs, libros,etc.) y describirlos en una colección en cuanto a su orientación política.
+
+%\begin{flushright}
+%\small
+%\begin{tabular}{l}
+%TESIS PARA OPTAR AL TITULO DE\\
+%MAESTRÍA EN INFORMÁTICA Y SISTEMAS\\
+%POR: ING. VIVIANA BEATRIZ MERCADO\\
+%TUTOR: DR. MARCELO ERRECALDE\\
+%CO-TUTOR: DRA. ANDREA VILLAGRA\\
+%FECHA: 2018\\
+%\end{tabular}
+%\end{flushright}
+%\vskip .5cm
+
+%\begin{center}
+%\textbf{EL PROCESO DE EXTRACCIÓN DE CONOCIMIENTO EN LA DETERMINACIÓN DEL PERFIL DEL AUTOR Y LA ATRIBUCIÓN DE AUTORÍA}
+%\end{center}
+%\vskip 1cm
+
+%-------------------------------------------------------------------------
+%objetivos y justificación 
+%-------------------------------------------------------------------------
+\section{Resumen Técnico}
+\vskip .5cm
+A partir de la disponibilidad de volúmenes inmensos de formación en la Web, se reconoce cada día más el rol de la Minería de Datos (MD) como una herramienta fundamental para hacer un uso adecuado y ventajoso de esta información Esta tendencia crece día a día y se plantean nuevos escenarios relevantes como es el caso de Big Data, donde el contexto donde deben ser aplicados los métodos de MD es sumamente desafiante. En particular, un área que comienza a ganar creciente interés es la determinación del perfil del autor (DPA), es decir, aquella que identifica patrones compartidos por un grupo de gente y que aborda problemas de clasificación de los usuarios de la Web de acuerdo a la edad, género, orientación política, etc. La DPA, un sub-campo del área más general conocida como análisis de autoría (AA), es un tema muy importante de investigación principalmente por sus potenciales (y actuales) aplicaciones en problemas de seguridad nacional e inteligencia, lingüística forense, análisis de mercados e identificación de rasgos de personalidad, entre otros.
+Otro sub-campo de la AA muy estudiado, denominado atribución de autoría (ATA), consiste en la atribución de un texto de autoría desconocida a uno de un conjunto de autores potenciales.
+Si bien la MD, la DPA y la ATA son áreas de investigación científica muy activas, cuando se aplican a problemas concretos de la vida real se las debe considerar en el contexto más general del proceso de extracción de conocimiento, que involucra varias etapas y herramientas para la recopilación de información, pre-procesamiento y extracción de características, análisis y visualización El problema es que, usualmente, estas herramientas están dispersas, escritas en lenguajes y plataformas diferentes y, en muchos casos, como en el análisis de información textual, no están disponibles para el idioma español
+En este contexto, este proyecto de tesis se propone el abordaje de dos tareas de AA, una de ATA y otra de DPA, como lo son la atribución de autoría y la determinación de la orientación política en documentos periodísticos, en el contexto de un proceso completo de extracción de conocimiento. La idea en este caso es realizar todas las etapas involucradas en este proceso (recopilación de datos, preparación, análisis y evaluación del conocimiento extraído) utilizando plataformas disponibles hoy en día como KNIME y RapidMiner que facilitan esta integración, identificando las falencias y fortalezas de las mismas, facilidad de uso, disponibilidad de las funcionalidades requeridas y flexibilidad para las extensiones necesarias.
+\vskip 1.5cm
+
+%-------------------------------------------------------------------------
+\textbf{Technical Summary}
+\vskip .5cm
+
+From the availability of huge amounts of information on the Web, it is increasingly recognized the key role of Data Mining (DM) as a fundamental tool to make an appropriate and advantageous use of this information. Furthermore, the newest and complex scenarios, such as Big Data, pose new work contexts where the standard MD methods have to face extremely challenging aspects. In particular, an area that is getting increasing interest is author profiling (AP), ie, the one that identifies patterns shared by a group of people and
+classifies Web users according their age, gender, political orientation, etc. AP, a sub-field of a more general area known as authorship analysis (AA), is a very important area due to its potential (and current) applications on tasks related to national security and intelligence, forensic linguistics, market analysis and identification of personality traits, among others. Another sub-field of AA, the authorship attribution (AAT), consists in determining which is the author of an arbitrary document among a set of possible persons.
+While DM, AP and AAP are areas of very active scientific research, when applied to concrete problems of the real life they should be considered in a broader context of the process of knowledge extraction (or KDD process), which involves several steps and tools for gathering information, pre-processing and feature extraction, analysis and visualization. However, these tools are frequently scattered, written in different languages and platforms and, in many cases, as in the analysis of textual information, are not available for the
+Spanish language.
+Based on the above considerations, this thesis project aims at addressing two AA tasks, one of AAT and another one of AP, such as authorship attribution and political orientation identification in journalistic documents, in the context of a complete KDD process. The idea here is to perform all the steps involved in this rocess (data gathering, preparation, analysis, and evaluation of the extracted knowledge) using platforms available today as KNIME and RapidMiner to facilitate this integration. One important aspect will be identifying weaknesses and strengths of those platforms, easiness of use, availability of the required
+capabilities, flexibility and scalability.
+\vskip 0.5cm
+
+%-------------------------------------------------------------------------
+%metodología
+%-------------------------------------------------------------------------
+
+\section{Estado del Arte}
+\vskip .5cm
+El análisis de autoría (AA) [Stamatatos, 2009] es un área de investigación que ha ganado interés creciente en los últimos años principalmente por sus potenciales (y actuales) aplicaciones en problemas de
+seguridad nacional e inteligencia, lingüística forense, análisis de mercados e identificación de rasgos de personalidad, entre otros. El AA se enfoca en la clasificación automática de textos basándose fundamentalmente en las elecciones estilísticas de los autores de los documentos, e incluye distintas tareas de análisis como, por ejemplo: a) la atribución de autora, b) la verificación de autor, c) la detección de plagios, d) la determinación
+del perfil del autor y e) la detección de inconsistencias estilísticas Los enfoques predominantes en esta área están basados en el aprendizaje automático/de máquina supervisado. En pocas palabras, estos enfoques derivan, a partir de un conjunto de datos etiquetados (conjunto de entrenamiento) y un proceso inductivo de aprendizaje/entrenamiento, un clasificador que puede generalizar sus predicciones a otros datos no observados previamente. La representación clásica de los textos/documentos en estos casos, incluye tanto atributos basados en el contenido (palabras) como en el estilo de escritura de los autores.
+A partir de la disponibilidad de volúmenes inmensos de información en la Web, se reconoce cada día más el rol de la AA como una herramienta fundamental para hacer un uso adecuado y ventajoso de esta información, lo que ha quedado plasmado en un incremento de Workshops y Competencias Internacionales específicos de esta temática En particular, un área que comienza a ganar creciente interés es la determinación del perfil del autor, es decir, aquella que identifica patrones compartidos por un grupo de gente y que aborda problemas de clasificación de acuerdo a la edad y género [Peersman et al., 2011, Schler et al., 2006, Argamon et al., 2009], nacionalidad, personalidad [Celli et al., 2014, Mairesse et al., 2007], orientación política [Abooraig et al.,2014, Conover et al.,2011, Malouf and Mullen, 2007], etc.
+Mas allá de la relevancia y ventajas que pueden tener este tipo de tareas existe, actualmente, un desarrollo limitado en nuestro país de trabajos y grupos de investigación especializados en la problemática del AA. En este contexto, en este plan de tesis nos enfocaremos en dos áreas claves de la AA como lo son la determinación del perfil del autor (DPA), y la atribución de autoría (ATA).
+Respecto a la DPA, también conocida como caracterización del autor (en inglés author profiling), incluye actividades como la determinación automática de la edad, género, rasgos de personalidad y orientación política, entre otras. En nuestro caso, nos concentraremos en la orientación política (pro-gobierno vs opositor) de documentos periodísticos de acceso público, como libros de investigación periodística, blogs periodísticos, artículos en revistas y diarios on-line, etc.
+Respecto a la ATA, analizaremos las particularidades que surgen para la identificación automática de autores, en aquellos contextos en donde los mismos tienen igual o diferente orientación política En estos casos, se analizará cuáles son las "features" (estilográficas o de contenido) que son más relevantes para discriminar los distintos autores que pertenecen al mismo (o diferente) espectro político
+Si bien la MD, la DPA y la ATA son áreas de investigación científica muy activas, cuando se aplican a problemas concretos de la vida real surgen algunos inconvenientes. 
+A diferencia de los estudios de laboratorio, donde es usual disponer de datos recolectados y procesados a priori, listos para ser analizados, el proceso de extracción de conocimiento (en inglés KDD, por Knowledge Discovery in Data) [Kurgan and Musilek, 2006, Fayyad et al., 1996] involucrado en problemas prácticos concretos requiere de varias etapas y herramientas para la recopilación de información, pre-procesamiento y extracción de características, análisis y visualización 
+El problema es que, usualmente, estas herramientas están dispersas, escritas en lenguajes y plataformas diferentes y, en muchos casos, como en el análisis de información textual, no están disponibles para el idioma español 
+Si bien existen hoy en día nuevas herramientas y plataformas como KNIME y RapidMiner que se suponen asisten al usuario en identificar e integrar estas etapas y herramientas, no siempre es claro cómo compatibilizan estas
+plataformas aspectos como la claridad, flexibilidad, facilidad de uso y extensión, entre otros. Por lo tanto, realizar una experiencia concreta sobre uno o varios problemas particulares (como la DPA y la ATA) utilizando una plataforma de este tipo, permitirá ganar experiencia que podrá servir no sólo en problemas de Minería de Textos y de la Web como los involucrados en este plan, sino en otras tareas de análisis futuras que involucran
+otros datos arbitrarios como, por ejemplo, imágenes, vídeos, sonido, datos de redes de sensores, etc.
+\vskip 0.5cm
+
+%-------------------------------------------------------------------------
+%hipótesis, supuestos y resultados obtenidos
+%-------------------------------------------------------------------------
+
+\section{Objetivos}
+\vskip .5cm
+
+\subsection{Generales}
+
+\begin{itemize}
+	\item Abordar dos tareas de AA, una de ATA y otra de DPA, como lo es la atribución de autora y la determinación de la orientación política en documentos periodísticos, en el contexto de un  proceso completo de extracción de conocimiento (proceso KDD). El estudio involucrará tanto tareas predictivas (clasificación de documentos de acuerdo a la orientación política y de acuerdo al autor) como descriptivas, como puede ser el descubrimiento de tópicos
+	
+	\item Realizar todas las etapas involucradas en el proceso KDD (recopila de datos, prepara, análisis y evalúa del conocimiento extraído) utilizando plataformas disponibles hoy en día como KNIME y RapidMiner que facilitan esta integra, identificando las falencias y fortalezas de las mismas, facilidad de uso, disponibilidad de las funcionalidades requeridas y flexibilidad para las extensiones necesarias.
+\end{itemize}
+
+\subsection{Específicos}
+\vskip .5cm
+\begin{itemize}
+	\item \textbf{Objetivo O1.} Relevar y comparar las principales técnicas de representa de documentos,	clasifica y descubrimiento de tópicos utilizadas con éxito en tareas de ATA y DPA.
+	
+	\item \textbf{Objetivo O2.} Identificar fuentes de informa donde obtener textos periodísticos de Argentina, con una clara orienta política (oficialista vs opositor), como así también de los autores de los mismos.Recopilar esta informa, generando un corpus con los textos planos de dichos documentos.
+	
+	\item \textbf{Objetivo O3.}Definir representaciones de documentos adecuadas para las tareas de ATA y DPA.
+	
+	\item \textbf{Objetivo O4.} Analizar y seleccionar métodos de clasifica y para el descubrimiento de tópicos que
+	sean adecuados para las tareas de ATA y DPA.
+	
+	\item \textbf{Objetivo O5.} Implementar un sistema completo de ATA y DPA con una plataforma tipo KNIME o RapidMiner que integre todas las etapas de un proceso KDD, tales como el pre-procesamiento de los datos y extracción de características, análisis, y visualiza del conocimiento obtenido.
+	
+	\item \textbf{Objetivo O6.} Experimentar con el sistema implementado, comparando distintas representaciones y métodos de análisis de documentos publicándose los resultados obtenidos.
+	
+\end{itemize}
+
+
+%-------------------------------------------------------------------------
+%conclusiones y recomendaciones
+%-------------------------------------------------------------------------
+
+\section{Metodología}
+\vskip 0.2cm
+El enfoque sigue los lineamientos básicos de cualquier método de desarrollo científico-técnico empírico:
+1) planteo de la hipótesis de trabajo, i.e., problema a resolver y alcance de la solución propuesta; 2) revisión bibliográfica para determinar grado de originalidad y tecnologías de sustento para el desarrollo; 3) diseco e implementa de la solución; 4) diseño de experimentos para corroborar empíricamente la hipótesis; 5) experimenta con datos de prueba en escenarios controlados, y datos obtenidos en condiciones realistas de
+trabajo; 6) análisis de los resultados para verificar si la hipótesis de trabajo ha sido demostrada; 7) redacción y publica del reporte.
+
+\textbf{Plan de trabajo:} el plan de dos años involucra el desarrollo completo de esta metodología para los 6 objetivos
+específicos enunciados en el punto 4 y otras tareas relacionadas, que se traducen en las siguientes actividades:
+
+\begin{itemize}
+	
+	\item \textbf{ACT1.} Estudio del estado del arte. Se incluye aquí el estudio de representaciones de documentos basadas en contenido y también en características estilográficas, métodos de clasifica basados en instancia y en perfiles, herramientas de procesamiento de textos y plataformas tipo KNIME y RapidMiner.
+	
+	\item \textbf{ACT2.} Construcción del corpus. Involucra la recopila de documentos de periodistas de reconocida
+	adhesión a las políticas del gobierno Nacional en Argentina, en el período finalizado el 10 de Diciembre de 2015 y de documentos de periodistas que clara y abiertamente son opositores a dichas políticas Estos documentos, estarán originados en la informa textual que dichos periodistas han hecho disponible en redes sociales, blogs, artículos en periódicos on-line, libros de investiga periodística, etc.
+	
+	\item  \textbf{ACT3.} Diseño e implementa de la solución Incluye la selección de las características para representar los documentos y los algoritmos de análisis Se implementarán/adaptarán aquellos que no estuvieran disponibles directamente para su uso y se integraran en la plataforma de análisis que no tuviera disponible la funcionalidad requerida. Para la tarea de DPA, con los documentos de ambas orientaciones políticas, se construirán perfiles diferenciados que referenciaremos como oficialistas vs opositor. Para ello, se utilizarán representaciones de documentos que combinen atributos de contenido y estilo con esquemas de pesado que ponderan tanto la ocurrencia como la co-ocurrencia de estos elementos. Algunas potenciales alternativas a considerarse en este caso, son la representa de segundo orden (SOA) utilizada en [López-Monroy et. al., 2013], SOA con clustering [López-Monroy et. al., 2014] y SOA + LSA [Alvarez Carmona et. al., 2015] que obtuvieron el primer lugar en la tarea de DPA de la competencia internacional PAN en las ediciones 2013, 2014 y 2015 respectivamente (pan.webis.de). A partir de estas representaciones se construirá un sistema prototipo que se enfocará en la determina del perfil ideológico de los periodistas. Respecto a la tarea de AA, el desafío en este caso es identificar autores de similar orienta política, los cuales seguramente tendrán patrones similares en el uso de
+	determinados términos, por lo que la diferencia estilográfica tendrá un rol fundamental. Algunas de las alternativas que se probarán en este caso, servirán por ejemplo las basadas en n-gramas de caracteres, que han demostrado una efectividad considerable en problemas de atribución de autoría [Cavnar and Trenkle, 1994, Frantzeskou et al., 2006].
+	También se considerará el uso de enfoques basados en perfiles [Layton and Watters, 2012, Escalante et al., 2012] con los cuales, investigadores del Laboratorio de Investiga y Desarrollo en Inteligencia Computacional (LIDIC), entre lo que se encuentran el Director del proyecto de tesis, ya han realizado algunas experiencias en tareas de DPA [Funez et al.,
+	2013].
+	
+	\item  \textbf{ACT4.} Diseño de experimentos, análisis de resultados y publica de resultados parciales. Se utilizarán técnicas de evalúa de acepta generalizada en el área y se analizarán los atributos más relevantes en la caracteriza del periodista. Estos resultados serán contrastados con experiencias similares realizadas en la determina ideológica de personas en estudios realizados en distintos países [Conover et al., 2011, Abooraig et al., 2014, Malouf and Mullen, 2007]. Asimismo, se hará una primera experiencia "crossdomain" analizándose en qué medida el modelo obtenido con documentos periodísticos formales puede ser aplicado en dominios similares pero, en los cuales, el contenido generado por los usuarios contiene alto nivel de ruido, o no corresponden a periodistas.
+	
+	\item  \textbf{ACT5.} Redacción de la tesis.
+	
+\end{itemize}
+
+\newpage
+%\vspace{3cm}
+
+\noindent
+{\bf Organización de la tesis}:
+
+\section{Estructura General de la Tesis}
+
+Explicar la estructura de la Tesis por cada uno de los capítulos:
+
+\begin{itemize}
+	\item Cap 1 Introducción
+	\item Cap 2 Contexto 
+	\item Cap 3 Descripción 
+	\item Cap 4 Representación del Modelo Matemático
+	\item Cap 5 Trabajar con Datos de Textos
+	\item Cap 6 Conclusiones
+\end{itemize}
+
+
+
+\newpage
+
+
+
+
+
+
+%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------
+\chapter{Contexto del Trabajo} \label{cap.2}
+
+\section{Métodos de Machine Learning}
+
+	\subsection{Método de Regresión}
+
+	\subsection{Método de Clasificación}
+
+	\subsection{Método de Agrupación}
+
+\section{Tipos de Aprendizaje}
+
+	\subsection{Aprendizaje Supervisado}
+
+El aprendizaje supervisado es el más común utilizado entre los dos, incluye algoritmos tales como regresión lineal y logístico, clasificación de clases múltiples y máquinas de vectores de soporte.
+
+El aprendizaje supervisado se llama así porque el desarrollador actúa como una guía para enseñar al algoritmo las conclusiones a las que debe llegar, es decir la salida del algoritmo ya es conocida. 
+
+Requiere que los posibles resultados del algoritmo ya sean conocidos y que los datos utilizados para entrenar el algoritmo ya estén etiquetados con las respuestas correctas. Por ejemplo, un algoritmo de clasificación aprenderá a identificar animales después de haber sido entrenados en un conjunto de datos de imágenes que están apropiadamente etiquetados con las especies del animal y algunas características de identificación.
+
+
+
+	\subsection{Aprendizaje No Supervisado}
+
+	\begin{itemize}
+	\item \textbf{Topic modeling}: 
+	
+	Clasificación de Documentos, procesos de aprendizaje automático que tienen por objetivo descubrir el tema subyacente en una colección de documentos. Generalizando un poco más, Topic Model busca patrones en el contenido de los documentos y lo hace en base a la frecuencia de aparición de palabras.
+	
+	Es de esperar que en documentos pertenecientes a un mismo tema aparecerán palabras que se repetirán con cierta frecuencia. Esta frecuencia se almacenará en una matriz de frecuencias que será la base para que puedan trabajar algoritmos de aprendizaje automático.
+	
+	En este ámbito de conocimiento se basan los sistemas de clasificación documental, búsqueda de contenidos y recomendación entre otros.
+	
+	\item \textbf{Clustering}: 
+	
+	Agrupamiento, es la tarea de agrupar un conjunto de objetos tales que los objetos en el mismo grupo (cluster) son más similares entre sí que a los de otros grupos.
+	
+	\item \textbf{PCA-ISOMAP}:
+	
+	Análisis de Componentes Principales (PCA) es un procedimiento estadístico que usa una transformación ortogonal para convertir un conjunto de observaciones de variables posiblemente correlacionadas en un conjunto de valores de variables linealmente no correlacionadas llamadas componentes principales.
+	
+	Algunas de las aplicaciones de PCA incluyen compresión, simplificación de datos para un aprendizaje más fácil, visualización. Tenga en cuenta que el conocimiento del dominio es muy importante al elegir si seguir adelante con PCA o no. No es adecuado en los casos en que los datos son ruidosos (todos los componentes de PCA tienen una variación bastante alta). 
+	
+	ISOMAP es un método de reducción de dimensionalidad no lineal . Es uno de los varios métodos de inserción de baja dimensión ampliamente utilizados. [1] Isomap se utiliza para calcular una incrustación cuasi-isométrica y de baja dimensión de un conjunto de puntos de datos de alta dimensión. El algoritmo proporciona un método simple para estimar la geometría intrínseca de una variedad de datos en base a una estimación aproximada de los vecinos de cada punto de datos en la variedad. Isomap es altamente eficiente y generalmente aplicable a una amplia gama de fuentes de datos y dimensionalidades.
+
+	
+	\end{itemize}
+
+\section{Trabajos Relacionados}
+
+%------------------------------------------------------------
+% CAPITULO 
+%------------------------------------------------------------
+\chapter{Descripción del Problema} \label{cap.3}
+
+\section{Identificación del Problema de Investigación}
+
+
+\section{Tarea de perfilado de Autor (Author Profiling)}
+
+
+\section{Tarea de identificación de Autor (Authorship Identification )}
+
+%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------
+\chapter{Representación del Modelo Matemático de Machine Learning} \label{cap.4}
+
+\section{Representación}
+
+	\subsection{Binaria}
+
+	\subsection{TF-IDF}
+
+	\subsection{LIWC}
+
+	\subsection{n-gramas de palabras}
+
+	\subsection{n-gramas de caracteres}
+
+	\subsection{Representación Binaria}
+
+\section{Algortimos}
+
+	\subsection{Bayes}
+
+	\subsection{Support Vector Machine (SVM)}
+
+	\subsection{Extreme Gradient}
+
+	\subsection{Árbol de decisión}
+
+\section{Reducción de características -Feature Reduction}
+
+	\subsection{IG}
+
+	\subsection{Chi Cuadrado ${\chi}^2$ }
+
+
+
+
+%-------------------------------------------------------------------------
+%-------------------------------------------------------------------------
+\chapter{Trabajando con Datos de Textos} \label{cap.5}
+
+\section{Preparar los Tipos de Datos}
+Para ejecutar el código, necesita los paquetes \texttt{numpy} , \texttt{scipy} , \texttt{scikit-learn} , \texttt{matplotlib} , \texttt{pandas} y \texttt{pillow} . Algunas de las visualizaciones de los árboles de decisión y las estructuras de las redes neuronales también requieren graphviz . El capítulo sobre procesamiento de textos también requiere \texttt{nltk} y \texttt{nltk}.
+
+La forma más fácil de configurar un entorno es mediante la instalación de \textbf{Anaconda}.
+
+
+\subsection{Instalar Python e IPython con Anaconda}
+\textbf{Instalar Python}
+
+Python es un lenguaje de programación, y por lo tanto nos permite escribir a una computadora qué es lo que queremos que haga. Python funciona, entre otros, en Windows, MacOS e incluso Linux. No es el lenguaje de programación más rápido, ni el más potente, pero sí uno de los más sencillos de programar y de entender, y es por eso que frecuentemente se usa para enseñar a programar a niños.
+
+Los archivos de python tienen la extensión .py. Son archivos de texto que son interpretados por el compilador. Para poder ejecutar programas en Python, necesitamos en primer lugar el interprete de python, y en segundo lugar el código que queremos ejecutar.
+
+Python dispone de multitud de “plugins” (llamados habitualmente módulos, paquetes, bibiliotecas o librerías) desarrollados por terceros, que permiten realizar multitud de funciones, tales como descargar vídeos de youtube, navegar por internet, dibujar gráficos, etc.
+
+Python es “case sensitive”, lo que quiere decir que diferencia mayúsculas de minúsculas, y por lo tanto python y Python, no son lo mismo.
+
+\vskip 0.2cm
+
+\textbf{Instalar Python con Anaconda}
+
+\vskip 0.2cm
+
+Aunque instalar Python en una computadora es bastante sencillo, en este primer bloque y, para asegurarnos de que nadie tiene problemas con la instalación se usará una distribución de Python gratuita llamada Anaconda. Aunque está disponible sólo en inglés, esta distribución incluye multitud de utilidades que nos facilitarán el trabajo y es ideal para empezar. Para instalarla, sólo tienes que descargar la versión de Anaconda para tu sistema operativo desde su página web (te pedirá que tu dirección de email).
+Deberás verificar si estás trabajando en Windows la versión de tu sistemas operaticvo (i.e 32 bits o 64 bits).
+Jupyter es un Python “interactivo” que nos va a facilitar mucho el aprendizaje. Se observará que Anaconda se ha instalado dos”versiones” diferentes. 
+Se utilizará  y ejecutar Jupyter Notebook , y se abrirá una ventana nueva en el navegador de internet que se tenga como predeterminado.
+
+\subsection{Tipos de Datos representados como cadenas}
+El texto suele ser solo una cadena en su conjunto de datos, pero no todas las funciones de cadena debe ser tratado como texto.
+Hay cuatro tipos de datos de cadena que se  detalla:
+\begin{itemize}
+	\item Datos categóricos
+	\item Cadenas libres que se pueden asignar semánticamente a categorías
+	\item Cadena de datos estructurada.
+	\item Datos de texto
+\end{itemize}
+
+Los datos categóricos son datos que provienen de una lista fija. 
+Por ejemplo, se recopila datos a través de una encuesta donde le preguntas a las personas cuál es su color favorito, con un menú desplegable que les permite para seleccionar entre "rojo", "verde", "azul", "amarillo", "negro", "blanco", "púrpura" y "rosa".
+Esto dará como resultado un conjunto de datos con exactamente ocho valores posibles diferentes, que claramente codificar una variable categórica. Puede comprobarse si este es el caso de sus datos por observación  (si ve muchas cadenas diferentes, es poco probable que se trate de una categoría variable) y debe confirmarlo calculando los valores únicos sobre el conjunto de datos, y posiblemente un histograma sobre la frecuencia con que aparece cada uno. 
+También es posible que desee comprobar si cada variable corresponde realmente a una categoría que tiene sentido para su consulta La existencia se haya escrito mal por ejemplo "negr" en lugar de "negro" corresponderá al mismo significado semántico pero deberá validado.
+Las respuestas que puede obtener de un campo de texto pertenecen a la segunda
+categoría en la lista, cadenas libres que se pueden asignar semánticamente a categorías. Eso probablemente será mejor codificar estos datos como una variable categórica, donde se pueda seleccionar las categorías utilizando las entradas más comunes o definiendo categorías que capturará respuestas de una manera que tenga sentido. 
+Se podría tener algunas categorías para colores estándar, tal vez una categoría "multicolor" para personas que dieron respuestas como "franjas verdes y rojas" y una categoría "otros" para cosas que no pueden ser codificadas de otra manera.Este tipo de pre-procesamiento va a requerir esfuerzo manual y no se automatizan fácilmente.
+A menudo, los valores ingresados manualmente no corresponde a categorías fijas, pero aún tienen alguna estructura subyacente, como direcciones, nombres de lugares o personas, fechas, números, u otros identificadores. 
+
+Este tipo de cadenas son a menudo muy difíciles de analizar, y su tratamiento es altamente dependiente del contexto y dominio.
+
+La categoría final de datos de cadena es información de texto de forma libre que consta de frases u oraciones.
+Los ejemplos incluyen tweets, registros de chat y/o información recopilada.
+Todas estas colecciones contienen información principalmente como oraciones compuesto de palabras.
+En el contexto del análisis de texto, el conjunto de datos a menudo se llama Corpus, y cada punto de datos, representado como un solo texto, se llama un documento. 
+ 
+\section{Experimentos}
+\subsection{Sintaxis}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[height= 4.6 cm] {ima01.png}
+	
+%\end{figure}
+
+%\begin{minipage}[t] {0.5mm} 
+	%Este se coloca a la izquierda. Se posiciona con {\tt t}
+%\includegraphics[width=\textwidth{blue}{In[2]:}]
+%\textwidth
+%\textcolor{blue}{In[2]:} 
+	
+%\end{minipage}
+
+%\fbox{ 
+%	\begin{minipage}{100mm}
+
+%\textcolor{green}{from} sklearn.datasets\textcolor{green} {import} load\_files
+%	reviews\_train\textcolor{blue}{=} load\_files(\textcolor{red}{``ofi\_opo\_UTF''},encoding\textcolor{blue}{=}`utf-8')
+%	\vskip 0.1cm
+%	\textcolor{blue}{\# load\_files returns a bunch, containing training texts and training labels}
+%	\vskip 0.1cm
+%	text\_train, y\_train \textcolor{blue}{=} reviews\_train.data, reviews\_train.target
+%	\vskip 0.1cm
+%	\textcolor{green}{print}\textcolor{red}{(``type of text\_train:\{\}''}.format(\textcolor{green}{type}(text\_train)))
+%	\vskip 0.1cm
+%	\textcolor{green}{print}\textcolor{red}{(``length of text\_train: \{\}''.} format(\textcolor{green}{len}(text\_train)))
+%	\vskip 0.1cm
+%	\textcolor{green}{print}\textcolor{red}{(``text\_train[0]:\textbackslash n \{\}''.}format(text\_train[\textcolor{green}{0}]))
+%	\vskip 0.1cm
+%	\textcolor{green}{type}(text\_train[\textcolor{green}{0}])
+
+%\end{minipage}
+
+
+\subsection{Programación}
+
+%\begin{minipage}[t]{10mm}
+	%Este se coloca a la izquierda. Se posiciona con {\tt t}
+%	\textcolor{blue}{In[3]:} {\tt}
+%\end{minipage}
+%\fbox{ \begin{minipage}{120mm}
+%Este es el segundo 	minipage, que al haber tres se colocará en el centro
+%np.unique(y\_train)
+
+%\end{minipage} }
+%\begin{minipage}[b]{28mm}
+	%Tercero y  ultimo. El parametro de posicion 	es {\tt b}
+%\end{minipage}
+
+%---------------------------------------------
+
+
+%------------------------------------------
+%-------------------------------------------------------------------------
+\chapter{Conclusiones} \label{cap.6}
+\section{Aportaciones de la Tesis}
+
+\section{Futuras Lineas de Investigación }
+La implementación está compuesta de al menos dos archivos que denominaremos: opositores y oficialistas.
+
+\begin{itemize}
+	\item Problemas 
+	\item Instancias de Pruebas
+	\item Estudio
+	\item Agradecimientos	
+\end{itemize}
+
+\thispagestyle{empty}
+\pagenumbering{arabic}
+
+%------------------------------------------------------------------------
+\newpage
+
+\renewcommand{\appendixname}{Anexo}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+
+\appendix
+\clearpage
+\addappheadtotoc
+\appendixpage 
+
+\chapter{Nomenclaturas y Acrónimos} \label{cap.nomencla}
+% Contenido del anexo I
+\chapter{Hoja de Soluciones}\label{cap.hoja}
+% Contenido del anexo II
+
+
+\listoffigures 	%Indices de Figuras
+\listoftables 	%Indices de Tablas
+
+
+%----------------------
+\backmatter
+\newpage
+\begin{center}
+%\renewcommand{\bibname}{Bibliografía}
+\thispagestyle{empty}
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{Bibliografía} %Incorporar al indice la Bibliografia
+\nocite{*}
+\bibliographystyle{plain} % estilo de la bibliografía.
+\bibliography{bibliografia} % yyyy.bib es el fichero donde está salvada la bibliografía.
+%----------------------
+
+%\printbibliography[heading=bibintoc]
+
+\end{center} 
+%\backmatter
+\end{document}

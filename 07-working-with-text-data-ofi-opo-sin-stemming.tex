@@ -1,0 +1,1127 @@
+
+% Default to the notebook output style
+
+% Inherit from the specified cell style.
+
+
+%%Este Capitulo pertenece a Resultados de las pruebas en Notebook de Python
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{07-working-with-text-data-ofi-opo-sin-stemming}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{from} \PY{n+nn}{preamble} \PY{k}{import} \PY{o}{*}
+\end{Verbatim}
+
+
+    \subsection{Trabajando con Datos de Textos}\label{working-with-text-data}
+
+    \subsubsection{Tipo de datos representado como cadenas}\label{types-of-data-represented-as-strings}
+
+\paragraph{Ejemplo: Artículos periodísticos}\label{example-application-sentiment-analysis-of-movie-reviews}
+%Linux: Lo saque a este comando (bajo Linux anda)
+%Lo hice a mano este comando (eliminar ese directorio que traía los datos)
+\\
+\begin{Verbatim}[commandchars=\\\{\}]
+        {<PYZus{}test}} \PY{o}{=} \PY{n}{load\PYZus{}files}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ofi\PYZus{}opo\PYZus{}UTF}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{text\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{reviews\PYZus{}test}\PY{o}{.}\PY{n}{data}\PY{p}{,} \PY{n}{reviews\PYZus{}test}\PY{o}{.}\PY{n}{target}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Number of documents in test data: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{text\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Samples per class (test): }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{bincount}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} En linux incorporar. En Windows lo saque: text\PYZus{}test = [doc.replace(b\PYZdq{}\PYZlt{}br /\PYZgt{}\PYZdq{}, b\PYZdq{} \PYZdq{}) for doc in text\PYZus{}test]}
+    
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of documents in test data: 196
+Samples per class (test): [98 98]
+
+    \end{Verbatim}
+
+    \subsubsection{Representando datos de textos en Bolsa de Palabras (Bag of Words)}\label{representing-text-data-as-bag-of-words}
+
+    \begin{figure}
+\centering
+%\includegraphics{images/bag_of_words.png}
+\caption{bag\_of\_words}
+\end{figure}
+
+    \paragraph{Apliccando bolsa de palabras en el conjunto de datos}\label{applying-bag-of-words-to-a-toy-dataset}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{bards\PYZus{}words} \PY{o}{=}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The fool doth think he is wise,}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                      \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{but the wise man knows himself to be a fool}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{feature\PYZus{}extraction}\PY{n+nn}{.}\PY{n+nn}{text} \PY{k}{import} \PY{n}{CountVectorizer}
+        \PY{n}{vect} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{p}{)}
+        \PY{n}{vect}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} CountVectorizer(analyzer='word', binary=False, decode\_error='strict',
+                dtype=<class 'numpy.int64'>, encoding='utf-8', input='content',
+                lowercase=True, max\_df=1.0, max\_features=None, min\_df=1,
+                ngram\_range=(1, 1), preprocessor=None, stop\_words=None,
+                strip\_accents=None, token\_pattern='(?u)\textbackslash{}\textbackslash{}b\textbackslash{}\textbackslash{}w\textbackslash{}\textbackslash{}w+\textbackslash{}\textbackslash{}b',
+                tokenizer=None, vocabulary=None)
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary size: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{vect}\PY{o}{.}\PY{n}{vocabulary\PYZus{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary content:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{ }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{vect}\PY{o}{.}\PY{n}{vocabulary\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Vocabulary size: 13
+Vocabulary content:
+ \{'the': 9, 'fool': 3, 'doth': 2, 'think': 10, 'he': 4, 'is': 6, 'wise': 12, 'but': 1, 'man': 8, 'knows': 7, 'himself': 5, 'to': 11, 'be': 0\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{bag\PYZus{}of\PYZus{}words} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bag\PYZus{}of\PYZus{}words: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{repr}\PY{p}{(}\PY{n}{bag\PYZus{}of\PYZus{}words}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+bag\_of\_words: <2x13 sparse matrix of type '<class 'numpy.int64'>'
+	with 16 stored elements in Compressed Sparse Row format>
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Dense representation of bag\PYZus{}of\PYZus{}words:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+             \PY{n}{bag\PYZus{}of\PYZus{}words}\PY{o}{.}\PY{n}{toarray}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Dense representation of bag\_of\_words:
+[[0 0 1 1 1 0 1 0 0 1 1 0 1]
+ [1 1 0 1 0 1 0 1 1 1 0 1 1]]
+
+    \end{Verbatim}
+
+    \subsubsection{Bolsa de palabras }\label{bag-of-word-for-movie-reviews}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{vect} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{)}
+         \PY{n}{X\PYZus{}train} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{X\PYZus{}train:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{repr}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+X\_train:
+<196x25512 sparse matrix of type '<class 'numpy.int64'>'
+	with 101028 stored elements in Compressed Sparse Row format>
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{feature\PYZus{}names} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Number of features: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{First 20 features:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{20}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Features 20010 to 20030:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{l+m+mi}{20010}\PY{p}{:}\PY{l+m+mi}{20030}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Every 2000th feature:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{2000}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of features: 25512
+First 20 features:
+['000', '01', '029', '05', '050', '10', '100', '1000', '1050', '109', '10k', '11', '111', '114', '115', '1168', '12', '120', '1200', '124']
+Features 20010 to 20030:
+['quiero', 'quietante', 'quietas', 'quieto', 'quijada', 'quilla', 'quilmes', 'quilombo', 'quince', 'quinchos', 'quinientas', 'quinientos', 'quinotos', 'quinquenio', 'quinta', 'quintacolumnistas', 'quinto', 'quiroga', 'quise', 'quisiera']
+Every 2000th feature:
+['000', 'aportados', 'caracteriza', 'conviven', 'detesta', 'especula', 'gradualista', 'investigarlo', 'miradas', 'pegado', 'quido', 'sebreli', 'tramoya']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{model\PYZus{}selection} \PY{k}{import} \PY{n}{cross\PYZus{}val\PYZus{}score}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{linear\PYZus{}model} \PY{k}{import} \PY{n}{LogisticRegression}
+         \PY{n}{scores} \PY{o}{=} \PY{n}{cross\PYZus{}val\PYZus{}score}\PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Mean cross\PYZhy{}validation accuracy: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{scores}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Mean cross-validation accuracy: 0.84
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{model\PYZus{}selection} \PY{k}{import} \PY{n}{GridSearchCV}
+         \PY{n}{param\PYZus{}grid} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{C}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+m+mf}{0.001}\PY{p}{,} \PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{\PYZcb{}}
+         \PY{n}{grid} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{param\PYZus{}grid}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{grid}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Best cross\PYZhy{}validation score: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Best parameters: }\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Best cross-validation score: 0.84
+Best parameters:  \{'C': 1\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{X\PYZus{}test} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{text\PYZus{}test}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Test score: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{grid}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Test score: 1.00
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{vect} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{min\PYZus{}df}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{)}
+         \PY{n}{X\PYZus{}train} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{X\PYZus{}train with min\PYZus{}df: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{repr}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+X\_train with min\_df: <196x4164 sparse matrix of type '<class 'numpy.int64'>'
+	with 68134 stored elements in Compressed Sparse Row format>
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{feature\PYZus{}names} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{First 50 features:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{50}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Features 1510 to 1530:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{l+m+mi}{1510}\PY{p}{:}\PY{l+m+mi}{1530}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Every 700th feature:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{700}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+First 50 features:
+['000', '10', '100', '11', '12', '125', '13', '14', '15', '16', '17', '18', '180', '19', '1955', '1973', '1976', '1983', '1989', '1999', '20', '200', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '21', '22', '23', '24', '25', '26', '27', '28', '30', '300', '33', '35', '40']
+Features 1510 to 1530:
+['estilo', 'esto', 'estos', 'estoy', 'estrategia', 'estrella', 'estructura', 'estudiantes', 'estudiar', 'estudio', 'estudios', 'estuve', 'estuviera', 'estuvieron', 'estuvimos', 'estuvo', 'está', 'estábamos', 'están', 'estás']
+Every 700th feature:
+['000', 'comienza', 'entonces', 'intervenciones', 'pagando', 'sacan']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{grid} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{LogisticRegression}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{param\PYZus{}grid}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{grid}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Best cross\PYZhy{}validation score: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Best cross-validation score: 0.86
+
+    \end{Verbatim}
+
+    \subsubsection{Stop-words}\label{stop-words}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{feature\PYZus{}extraction}\PY{n+nn}{.}\PY{n+nn}{text} \PY{k}{import} \PY{n}{ENGLISH\PYZus{}STOP\PYZus{}WORDS}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Number of stop words: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{ENGLISH\PYZus{}STOP\PYZus{}WORDS}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Every 10th stopword:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{ENGLISH\PYZus{}STOP\PYZus{}WORDS}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of stop words: 318
+Every 10th stopword:
+['amoungst', 'her', 'former', 'further', 'an', 'always', 'many', 'become', 'should', 'otherwise', 'ever', 'system', 'con', 'nine', 'with', 'any', 'same', 'every', 'sixty', 'your', 'by', 'although', 'sincere', 'those', 'yours', 'while', 'herein', 'about', 'nevertheless', 'forty', 'around', 'seemed']
+
+    \end{Verbatim}
+
+    \subsubsection{La saque hasta que tengamos stop-words en
+español}\label{la-saque-hasta-que-tengamos-stop-words-en-espauxf1ol}
+
+\subsubsection{Specifying stop\_words="english" uses the built-in
+list.}\label{specifying-stop_wordsenglish-uses-the-built-in-list.}
+
+\subsubsection{We could also augment it and pass our
+own.}\label{we-could-also-augment-it-and-pass-our-own.}
+
+%vect = CountVectorizer(min\_df=5,
+%stop\_words="english").fit(text\_train) X\_train =
+%vect.transform(text\_train) print("X\_train with stop
+
+
+%words:\n{}".format(repr(X\_train)))
+
+    \subsubsection{También la saque hasta que tengamos stop-words en
+español}\label{tambiuxe9n-la-saque-hasta-que-tengamos-stop-words-en-espauxf1ol}
+
+grid = GridSearchCV(LogisticRegression(), param\_grid, cv=5)
+grid.fit(X\_train, y\_train) print("Best cross-validation score:
+\{:.2f\}".format(grid.best\_score\_))
+
+    \subsubsection{Rescaling the Data with
+tf-idf}\label{rescaling-the-data-with-tf-idf}
+
+\begin{equation*}
+\text{tfidf}(w, d) = \text{tf} \log\big(\frac{N + 1}{N_w + 1}\big) + 1
+\end{equation*}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{feature\PYZus{}extraction}\PY{n+nn}{.}\PY{n+nn}{text} \PY{k}{import} \PY{n}{TfidfVectorizer}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{pipeline} \PY{k}{import} \PY{n}{make\PYZus{}pipeline}
+         \PY{n}{pipe} \PY{o}{=} \PY{n}{make\PYZus{}pipeline}\PY{p}{(}\PY{n}{TfidfVectorizer}\PY{p}{(}\PY{n}{min\PYZus{}df}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{norm}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{,}
+                              \PY{n}{LogisticRegression}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{param\PYZus{}grid} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{logisticregression\PYZus{}\PYZus{}C}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+m+mf}{0.001}\PY{p}{,} \PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}\PY{p}{\PYZcb{}}
+         
+         \PY{n}{grid} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{pipe}\PY{p}{,} \PY{n}{param\PYZus{}grid}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{grid}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Best cross\PYZhy{}validation score: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Best cross-validation score: 0.90
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{vectorizer} \PY{o}{=} \PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}estimator\PYZus{}}\PY{o}{.}\PY{n}{named\PYZus{}steps}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tfidfvectorizer}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+         \PY{c+c1}{\PYZsh{} transform the training dataset:}
+         \PY{n}{X\PYZus{}train} \PY{o}{=} \PY{n}{vectorizer}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} find maximum value for each of the features over dataset:}
+         \PY{n}{max\PYZus{}value} \PY{o}{=} \PY{n}{X\PYZus{}train}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{toarray}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{ravel}\PY{p}{(}\PY{p}{)}
+         \PY{n}{sorted\PYZus{}by\PYZus{}tfidf} \PY{o}{=} \PY{n}{max\PYZus{}value}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} get feature names}
+         \PY{n}{feature\PYZus{}names} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{vectorizer}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Features with lowest tfidf:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+               \PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{n}{sorted\PYZus{}by\PYZus{}tfidf}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{20}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Features with highest tfidf: }\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+               \PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{n}{sorted\PYZus{}by\PYZus{}tfidf}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{20}\PY{p}{:}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Features with lowest tfidf:
+['ambos' 'hacerse' 'dignidad' 'demuestra' 'tribunales' 'semanas'
+ 'sostienen' 'pidiendo' 'buenas' 'comodoro' 'concepto' 'motivos' 'sede'
+ 'intentar' 'escucha' '2013' 'nicolás' 'asegura' 'facturas' 'realizó']
+Features with highest tfidf: 
+['una' 'lo' 'su' 'un' 'con' 'cristina' 'era' 'me' 'despuã' 'no' 'dã' 'se'
+ 'los' 'mã' 'en' 'el' 'habã' 'que' 'la' 'de']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{sorted\PYZus{}by\PYZus{}idf} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{vectorizer}\PY{o}{.}\PY{n}{idf\PYZus{}}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Features with lowest idf:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}
+                \PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{n}{sorted\PYZus{}by\PYZus{}idf}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{100}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Features with lowest idf:
+['el' 'que' 'la' 'en' 'una' 'de' 'por' 'con' 'se' 'los' 'un' 'no' 'del'
+ 'para' 'es' 'lo' 'al' 'como' 'las' 'su' 'pero' 'si' 'le' 'hay' 'porque'
+ 'fue' 'más' 'todo' 'sus' 'gobierno' 'ese' 'cuando' 'todos' 'sobre' 'sin'
+ 'también' 'eso' 'esta' 'tiene' 'desde' 'está' 'ser' 'ni' 'entre' 'ya'
+ 'argentina' 'puede' 'son' 'hasta' 'cristina' 'esa' 'este' 'poder' 'vez'
+ 'política' 'uno' 'país' 'años' 'hace' 'kirchner' 'muy' 'parte' 'estado'
+ 'ahora' 'dos' 'era' 'les' 'contra' 'qué' 'dijo' 'tanto' 'hoy' 'otra'
+ 'otros' 'hacer' 'están' 'nadie' 'menos' 'me' 'mismo' 'esto' 'decir'
+ 'algo' 'presidenta' 'nos' 'cada' 'otro' 'después' 'había' 'durante'
+ 'vida' 'nunca' 'hizo' 'ver' 'va' 'donde' 'medios' 'siempre' 'nada' 'sino']
+
+    \end{Verbatim}
+
+    \paragraph{Investigating model
+coefficients}\label{investigating-model-coefficients}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{mglearn}\PY{o}{.}\PY{n}{tools}\PY{o}{.}\PY{n}{visualize\PYZus{}coefficients}\PY{p}{(}
+             \PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}estimator\PYZus{}}\PY{o}{.}\PY{n}{named\PYZus{}steps}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{logisticregression}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{coef\PYZus{}}\PY{p}{,}
+             \PY{n}{feature\PYZus{}names}\PY{p}{,} \PY{n}{n\PYZus{}top\PYZus{}features}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_37_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Bag of words with more than one word
+(n-grams)}\label{bag-of-words-with-more-than-one-word-n-grams}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{bards\PYZus{}words:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+bards\_words:
+['The fool doth think he is wise,', 'but the wise man knows himself to be a fool']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{cv} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{ngram\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary size: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{vocabulary\PYZus{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Vocabulary size: 13
+Vocabulary:
+['be', 'but', 'doth', 'fool', 'he', 'himself', 'is', 'knows', 'man', 'the', 'think', 'to', 'wise']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{cv} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{ngram\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary size: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{vocabulary\PYZus{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Vocabulary size: 14
+Vocabulary:
+['be fool', 'but the', 'doth think', 'fool doth', 'he is', 'himself to', 'is wise', 'knows himself', 'man knows', 'the fool', 'the wise', 'think he', 'to be', 'wise man']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Transformed data (dense):}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{transform}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}\PY{o}{.}\PY{n}{toarray}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Transformed data (dense):
+[[0 0 1 1 1 0 1 0 0 1 0 1 0 0]
+ [1 1 0 0 0 1 0 1 1 0 1 0 1 1]]
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{cv} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{ngram\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{bards\PYZus{}words}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary size: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{vocabulary\PYZus{}}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Vocabulary:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{cv}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Vocabulary size: 39
+Vocabulary:
+['be', 'be fool', 'but', 'but the', 'but the wise', 'doth', 'doth think', 'doth think he', 'fool', 'fool doth', 'fool doth think', 'he', 'he is', 'he is wise', 'himself', 'himself to', 'himself to be', 'is', 'is wise', 'knows', 'knows himself', 'knows himself to', 'man', 'man knows', 'man knows himself', 'the', 'the fool', 'the fool doth', 'the wise', 'the wise man', 'think', 'think he', 'think he is', 'to', 'to be', 'to be fool', 'wise', 'wise man', 'wise man knows']
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{pipe} \PY{o}{=} \PY{n}{make\PYZus{}pipeline}\PY{p}{(}\PY{n}{TfidfVectorizer}\PY{p}{(}\PY{n}{min\PYZus{}df}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{,} \PY{n}{LogisticRegression}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} running the grid\PYZhy{}search takes a long time because of the}
+         \PY{c+c1}{\PYZsh{} relatively large grid and the inclusion of trigrams}
+         \PY{n}{param\PYZus{}grid} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{logisticregression\PYZus{}\PYZus{}C}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{p}{[}\PY{l+m+mf}{0.001}\PY{p}{,} \PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{]}\PY{p}{,}
+                       \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{tfidfvectorizer\PYZus{}\PYZus{}ngram\PYZus{}range}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{]}\PY{p}{\PYZcb{}}
+         
+         \PY{n}{grid} \PY{o}{=} \PY{n}{GridSearchCV}\PY{p}{(}\PY{n}{pipe}\PY{p}{,} \PY{n}{param\PYZus{}grid}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{)}
+         \PY{n}{grid}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Best cross\PYZhy{}validation score: }\PY{l+s+si}{\PYZob{}:.2f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}score\PYZus{}}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Best parameters:}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}params\PYZus{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Best cross-validation score: 0.91
+Best parameters:
+\{'logisticregression\_\_C': 100, 'tfidfvectorizer\_\_ngram\_range': (1, 2)\}
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} extract scores from grid\PYZus{}search}
+         \PY{n}{scores} \PY{o}{=} \PY{n}{grid}\PY{o}{.}\PY{n}{cv\PYZus{}results\PYZus{}}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{mean\PYZus{}test\PYZus{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+         \PY{c+c1}{\PYZsh{} visualize heat map}
+         \PY{n}{heatmap} \PY{o}{=} \PY{n}{mglearn}\PY{o}{.}\PY{n}{tools}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}
+             \PY{n}{scores}\PY{p}{,} \PY{n}{xlabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{C}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ylabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ngram\PYZus{}range}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{viridis}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{fmt}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+             \PY{n}{xticklabels}\PY{o}{=}\PY{n}{param\PYZus{}grid}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{logisticregression\PYZus{}\PYZus{}C}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,}
+             \PY{n}{yticklabels}\PY{o}{=}\PY{n}{param\PYZus{}grid}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tfidfvectorizer\PYZus{}\PYZus{}ngram\PYZus{}range}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{colorbar}\PY{p}{(}\PY{n}{heatmap}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} <matplotlib.colorbar.Colorbar at 0x19bbdd8a828>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_45_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{c+c1}{\PYZsh{} extract feature names and coefficients}
+         \PY{n}{vect} \PY{o}{=} \PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}estimator\PYZus{}}\PY{o}{.}\PY{n}{named\PYZus{}steps}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{tfidfvectorizer}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{feature\PYZus{}names} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{vect}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{coef} \PY{o}{=} \PY{n}{grid}\PY{o}{.}\PY{n}{best\PYZus{}estimator\PYZus{}}\PY{o}{.}\PY{n}{named\PYZus{}steps}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{logisticregression}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{coef\PYZus{}}
+         \PY{n}{mglearn}\PY{o}{.}\PY{n}{tools}\PY{o}{.}\PY{n}{visualize\PYZus{}coefficients}\PY{p}{(}\PY{n}{coef}\PY{p}{,} \PY{n}{feature\PYZus{}names}\PY{p}{,} \PY{n}{n\PYZus{}top\PYZus{}features}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} (-22, 22)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_46_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Esto de abajo para 3-gramas daba un error, por lo que lo
+hice para 2. Algunos bigramas lucen
+interesantes}\label{esto-de-abajo-para-3-gramas-daba-un-error-por-lo-que-lo-hice-para-2.-algunos-bigramas-lucen-interesantes}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} find 3\PYZhy{}gram features}
+         \PY{n}{mask} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n+nb}{len}\PY{p}{(}\PY{n}{feature}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{feature} \PY{o+ow}{in} \PY{n}{feature\PYZus{}names}\PY{p}{]}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{2}
+         \PY{c+c1}{\PYZsh{} visualize only 3\PYZhy{}gram features}
+         \PY{n}{mglearn}\PY{o}{.}\PY{n}{tools}\PY{o}{.}\PY{n}{visualize\PYZus{}coefficients}\PY{p}{(}\PY{n}{coef}\PY{o}{.}\PY{n}{ravel}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{n}{mask}\PY{p}{]}\PY{p}{,}
+                                              \PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{n}{mask}\PY{p}{]}\PY{p}{,} \PY{n}{n\PYZus{}top\PYZus{}features}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{22}\PY{p}{,} \PY{l+m+mi}{22}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}32}]:} (-22, 22)
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_48_1.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Advanced tokenization, stemming and lemmatization (lo saque
+por
+ahora)}\label{advanced-tokenization-stemming-and-lemmatization-lo-saque-por-ahora}
+
+    \subsubsection{Topic Modeling and Document
+Clustering}\label{topic-modeling-and-document-clustering}
+
+\paragraph{Latent Dirichlet
+Allocation}\label{latent-dirichlet-allocation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{vect} \PY{o}{=} \PY{n}{CountVectorizer}\PY{p}{(}\PY{n}{max\PYZus{}features}\PY{o}{=}\PY{l+m+mi}{10000}\PY{p}{,} \PY{n}{max\PYZus{}df}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{15}\PY{p}{)}
+         \PY{n}{X} \PY{o}{=} \PY{n}{vect}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn}\PY{n+nn}{.}\PY{n+nn}{decomposition} \PY{k}{import} \PY{n}{LatentDirichletAllocation}
+         \PY{n}{lda} \PY{o}{=} \PY{n}{LatentDirichletAllocation}\PY{p}{(}\PY{n}{n\PYZus{}topics}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{learning\PYZus{}method}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{batch}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                         \PY{n}{max\PYZus{}iter}\PY{o}{=}\PY{l+m+mi}{25}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} We build the model and transform the data in one step}
+         \PY{c+c1}{\PYZsh{} Computing transform takes some time,}
+         \PY{c+c1}{\PYZsh{} and we can save time by doing both at once}
+         \PY{n}{document\PYZus{}topics} \PY{o}{=} \PY{n}{lda}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+C:\textbackslash{}Users\textbackslash{}Grabarino\textbackslash{}Anaconda3\textbackslash{}lib\textbackslash{}site-packages\textbackslash{}sklearn\textbackslash{}decomposition\textbackslash{}online\_lda.py:294: DeprecationWarning: n\_topics has been renamed to n\_components in version 0.19 and will be removed in 0.21
+  DeprecationWarning)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lda.components\PYZus{}.shape: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{lda}\PY{o}{.}\PY{n}{components\PYZus{}}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+lda.components\_.shape: (10, 10000)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{c+c1}{\PYZsh{} for each topic (a row in the components\PYZus{}), sort the features (ascending).}
+         \PY{c+c1}{\PYZsh{} Invert rows with [:, ::\PYZhy{}1] to make sorting descending}
+         \PY{n}{sorting} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{lda}\PY{o}{.}\PY{n}{components\PYZus{}}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{c+c1}{\PYZsh{} get the feature names from the vectorizer:}
+         \PY{n}{feature\PYZus{}names} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{vect}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{c+c1}{\PYZsh{} Print out the 10 topics:}
+         \PY{n}{mglearn}\PY{o}{.}\PY{n}{tools}\PY{o}{.}\PY{n}{print\PYZus{}topics}\PY{p}{(}\PY{n}{topics}\PY{o}{=}\PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{n}{feature\PYZus{}names}\PY{o}{=}\PY{n}{feature\PYZus{}names}\PY{p}{,}
+                                    \PY{n}{sorting}\PY{o}{=}\PY{n}{sorting}\PY{p}{,} \PY{n}{topics\PYZus{}per\PYZus{}chunk}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{n\PYZus{}words}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+topic 0       topic 1       topic 2       topic 3       topic 4       
+--------      --------      --------      --------      --------      
+usted         mas           pro           habã          flaco         
+mas           magnetto      repsol        mã            fiscal        
+vos           perón         diálogo       nã            ayer          
+sé            crisis        feinmann      stor          fiscales      
+ojo           usted         precios       an            aníbal        
+mujeres       texto         fuerzas       dã            pro           
+plaza         vos           electo        despuã        lópez         
+mira          beatriz       gusto         aã            gils          
+ojos          aquella       largo         tenã          carbó         
+tinelli       alfonsín      período       polã          procuradora   
+
+
+topic 5       topic 6       topic 7       topic 8       topic 9       
+--------      --------      --------      --------      --------      
+campo         boudou        perón         usted         righi         
+báez          mas           mujeres       perón         primavera     
+brasil        ciccone       gladis        humanos       camporista    
+lópez         capdevilla    padre         dios          vázquez       
+pesos         vicepresidentechiche        audiencia     montoneros    
+juego         amado         vos           ciudad        oea           
+sector        bonadio       jóvenes       morales       doctor        
+default       plan          madre         cidh          mercado       
+exportación   cfk           peronista     metropolitana clase         
+control       lijo          chica         expresión     piensa        
+
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{lda100} \PY{o}{=} \PY{n}{LatentDirichletAllocation}\PY{p}{(}\PY{n}{n\PYZus{}topics}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{learning\PYZus{}method}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{batch}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                                            \PY{n}{max\PYZus{}iter}\PY{o}{=}\PY{l+m+mi}{25}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{document\PYZus{}topics100} \PY{o}{=} \PY{n}{lda100}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+C:\textbackslash{}Users\textbackslash{}Grabarino\textbackslash{}Anaconda3\textbackslash{}lib\textbackslash{}site-packages\textbackslash{}sklearn\textbackslash{}decomposition\textbackslash{}online\_lda.py:294: DeprecationWarning: n\_topics has been renamed to n\_components in version 0.19 and will be removed in 0.21
+  DeprecationWarning)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{topics} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{24}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{28}\PY{p}{,} \PY{l+m+mi}{36}\PY{p}{,} \PY{l+m+mi}{37}\PY{p}{,} \PY{l+m+mi}{41}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{,} \PY{l+m+mi}{51}\PY{p}{,} \PY{l+m+mi}{53}\PY{p}{,} \PY{l+m+mi}{54}\PY{p}{,} \PY{l+m+mi}{63}\PY{p}{,} \PY{l+m+mi}{89}\PY{p}{,} \PY{l+m+mi}{97}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{sorting} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{lda100}\PY{o}{.}\PY{n}{components\PYZus{}}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{n}{feature\PYZus{}names} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{vect}\PY{o}{.}\PY{n}{get\PYZus{}feature\PYZus{}names}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{mglearn}\PY{o}{.}\PY{n}{tools}\PY{o}{.}\PY{n}{print\PYZus{}topics}\PY{p}{(}\PY{n}{topics}\PY{o}{=}\PY{n}{topics}\PY{p}{,} \PY{n}{feature\PYZus{}names}\PY{o}{=}\PY{n}{feature\PYZus{}names}\PY{p}{,}
+                                    \PY{n}{sorting}\PY{o}{=}\PY{n}{sorting}\PY{p}{,} \PY{n}{topics\PYZus{}per\PYZus{}chunk}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{n\PYZus{}words}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+topic 7       topic 16      topic 24      topic 25      topic 28      
+--------      --------      --------      --------      --------      
+compañera     fiscales      usted         œâ            báez          
+yegua         italia        novela        enfrenta      costa         
+rasgos        corrupción    comercial     enlace        jóvenes       
+sara          di            despenalizaciónengañar       pibes         
+salvamos      usted         aborto        enfrente      vos           
+cerco         pietro        civil         enfrentar     declaración   
+muñecas       fiscal        tenembaum     enfrentamientolópez         
+arribo        mani          código        enfrentados   escrito       
+abandona      pulite        escribió      enfrentado    larroque      
+tranquilamentehipocresía    medianoche    enfermos      organizaciones
+abandonarlo   independientesoficiales     enoja         abogados      
+encontré      ejecutivo     insistir      enfermo       sostuvo       
+duras         procuradora   personaje     enfermeras    intereses     
+rasgo         acerca        defensa       enfermera     manipulación  
+evidencia     deber         ganar         enfermedad    carta         
+salí          actividad     escribir      enferma       2001          
+valioso       propuesta     encima        enfatizó      diputado      
+planteábamos  solamente     terminar      enero         juventud      
+legado        ocurre        real          enlaces       organización  
+virulentos    reforma       necesidad     enojaba       declaraciones 
+
+
+topic 36      topic 37      topic 41      topic 45      topic 51      
+--------      --------      --------      --------      --------      
+río           razã³n        corrupción    memorándum    pro           
+obras         mã            realmente     báez          cuba          
+gallegos      polã          lópez         bonadio       cena          
+cadena        alemã         doctor        irán          visita        
+habló         quã           república     timerman      plaza         
+natatorio     tica          pruebas       gas           dando         
+energía       experiencia   bonadío       leandro       distancia     
+quiera        sector        lanata        planteo       ala           
+fiscal        entrevista    proceso       oficialismo   mantuvo       
+inaugurar     oã            constitución  serán         eduardo       
+pesar         paã           clave         denuncia      miraba        
+30            identidad     ejecutivo     ii            finalmente    
+nuclear       tambiã        afirmó        observación   revolución    
+muestra       os            terminar      familiar      resultado     
+memoria       nã            fueros        dolor         fr            
+cruz          stor          cantidad      energía       encuentro     
+intendente    dã            capitanich    lázaro        juego         
+alrededor     tico          absolutamente recusación    peso          
+lópez         estã          situaciones   cfk           llegada       
+irreversibles acciã³n       segunda       magistrado    usaba         
+
+
+topic 53      topic 54      topic 63      topic 89      topic 97      
+--------      --------      --------      --------      --------      
+cabral        capitanich    aparato       negocios      imagino       
+odio          empresarios   odio          plan          hacía         
+subrogancias  rural         militancia    estadísticas  plaza         
+grieta        chaco         sé            agenda        debate        
+independencia mas           manuel        hablan        regreso       
+jueces        yebra         crítica       tenido        línea         
+existían      piensan       partidos      2003          2003          
+indiferencia  vido          medida        mis           simple        
+presa         carne         usted         quita         leche         
+tolosa        noelia        vos           amado         esperaba      
+junio         desafíos      montoneros    imprenta      terminaron    
+ruta          nuevas        tipos         mejores       convencer     
+modelo        menemismo     puente        datos         23            
+juzgado       13            beatriz       desarrollo    dejaba        
+institucional presente      espero        cuatro        cuatro        
+furnari       posiciones    setenta       pobres        secas         
+subrogancia   12            diálogo       skanska       peleas        
+irán          debate        términos      explicó       barrios       
+presentacionesuso           abal          comprar       obtuvo        
+memorándum    dirigente     medina        firma         pasos         
+
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{c+c1}{\PYZsh{} sort by weight of \PYZdq{}iran\PYZdq{} topic 45}
+         \PY{n}{music} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{document\PYZus{}topics100}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{45}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{c+c1}{\PYZsh{} print the five documents where the topic is most important}
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{music}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} show first two sentences}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{text\PYZus{}train}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+﻿Judicializados
+Lázaro Báez y el pacto con Irán puede complicar a la ex presidenta, Cristina Fernández de Kirchner. Las tarifas, a Tribunales.
+La reactivación de una causa intrincada tiñe de nubarrones el cielo de la cúpula de lo que fue el gobierno kirchnerista. Ello podría ser un golpe inesperado. Para comprender el derrotero, recordemos primero que la causa conocida como “Ruta del dinero K”, ha dado un giro sorprendente. Leandro, el menor de los hijos de Lázaro Báez se presentó en la causa para recusar al juez Sebastián Casanello alegando que la investigación estaba direccionada hacia su padre y el entorno familiar, sin ir más allá y profundizar en la posible participación de la ex presidenta Cristina Fernández de Kirchner y funcionarios jerárquicos de su gobierno. Leandro Báez –de 26 años–, se apoyó en artículos periodísticos que dan cuenta del posible vínculo entre el juez y la ex presidenta, para dejar entrever que ése es el motivo por el que el magistrado intenta cortar el hilo por lo más delgado.
+Una observación y dos conjeturas. La observación es que aquí nadie niega ningún delito. La primera conjetura es que Leandro Báez, mimado, impulsivo y cansado de los avatares por los que está atravesando su familia, se haya cortado solo en la jugada. La segunda, que se trate de una maniobra acordada para victimizar a su padre en una supuesta interna familiar, mostrarlo acorralado y preparar el terreno para que declare como arrepentido ante otro juez si es que la recusación de Casanello prospera.
+Quienes deben decidir sobre la recusación del juez apodado “tortuga” son los jueces de la Sala II de la Cámara Federal integrada por Martín Irurzún, Horacio Cattani y Eduardo Farah. Este tribunal ratificó, en las vísperas del feriado del 25 de Mayo, la decisión de Claudio Bonadio de desestimar un planteo de nulidad presentado por Héctor Timerman en una causa por la aprobación del memorándum con Irán. El expediente se había iniciado contra el ex canciller, la ex presidenta y los legisladores que aprobaron el memorándum. ¿Por qué se trata de una decisión central? En primer lugar por la gravedad de los hechos; en un audio que data del año 2012, difundido en el programa de nuestro colega Nicolás Wiñazki, se lo escuchó a Timerman admitir que Irán fue el responsable del atentado a la AMIA. Lo peor del caso es que casi en paralelo, el entonces canciller negociaba el memorándum de entendimiento con ese país, algo incomprensible que puso de pie a casi toda la comunidad judía y que, en la presente causa, motivó el planteo de los denunciantes bajo el delito de “traición a la patria”.
+En segundo lugar porque en su resolución, dos de los tres integrantes de la Sala II (Irurzún y Cattani), rechazaron las objeciones de la defensa de Timerman ratificando el planteo de Bonadio y subrayando, respecto de la denuncia original del fallecido fiscal Alberto Nisman que “la desestimación y el archivo de las actuaciones pueden reactivarse cuando –como en el caso– existen elementos no valorados anteriormente” y que serán materia de definición en la instrucción “las consecuencias de las nuevas hipótesis”, sin perjuicio de cuál sea el magistrado que siga interviniendo. Esto cobra importancia porque hay que recordar que Daniel Rafecas había archivado la causa. ¿Bonadio podría tomarla? Eso sería una novedad respecto de la denuncia original del memorándum con Irán que, de reactivarse, se convertiría en un nuevo dolor de cabeza para CFK, Timerman y otros ex funcionarios K. En síntesis: Cristina podría volver a ser investigada y nada menos que por Bonadio.
+Ahogo. La política tampoco da respiro, aunque en el Gobierno se consiguió oxígeno con los recientes anuncios del pago de las sentencias a los jubilados y el aumento en el mínimo imponible a los bienes personales que serán enviados al Congreso. El pago de las sentencias representa una reparación histórica a una injusticia cruel que se cometió contra más de dos millones de jubilados. Además de eso, la actitud del kirchnerismo de incumplir fallos refrendados por la Corte Suprema fue un agravio a la vigencia de la legalidad.
+El blanqueo de capitales, en cambio, genera controversias y deja mal parado al ministro de Hacienda, Alfonso Prat-Gay, quien había criticado el blanqueo de CFK. “Parece hecho para beneficiar a muchos de los afectados por los Panamá Papers”, señala un conocedor de temas tributarios.
+El tarifazo en el gas, que repercutió no sólo en la Patagonia sino también en el resto del país fue lo que marcó el ritmo de la semana y le trajo un dolor de cabeza al oficialismo. ¿Por qué se actuó con tan poca previsión? ¿Pragmatismo salvaje o error de cálculo? “Un poco de las tres cosas”, expresó un descontento miembro del oficialismo.
+El ministro de Energía, Juan José Aranguren ha quedado muy golpeado y en la mira, aunque son varias las fuentes que aseguran que no le van a soltar la mano. El ministro les dijo a sus colegas que él mismo podía salir a dar las explicaciones; desfiló ante varios ministerios y el consenso general indicó que lo mejor sería guardarlo. La oratoria no es lo suyo. Los que aún lo sostienen en el PRO aseguran que es un “excelente profesional técnico, pero del mundo corporativo, donde lo que prima es el resultado”. Hay quienes afirman haberle escuchado decir que “Argentina se ha quedado sin energía, ya no quedan reservas ni para luz ni para el gas”. Es cierto –reflexiona un diputado– “pero la paciencia de la gente tiene un límite y dentro de poco ya no le va a importar el desastre que dejó De Vido o las aventuras de Cristina. Quiere luz, gas y poder pagarlos”.
+¿Qué ocurrió entonces? Es evidente que no se llegó a medir el impacto social de las medidas. Tampoco se realizó un tamiz exhaustivo de los casos especiales: zonas geográficas más sometidas al frío,  gente común con afecciones puntuales que las transforman en electrodependientes, etc. Se avanzó y luego vino el aluvión de quejas. Un error, según reconoce el oficialismo. En ese contexto lo único que quedaba por hacer era poner en marcha un plan de contingencia destinado a lograr un control de daños. Por eso la conferencia de prensa del ministro del Interior, Rogelio Frigerio quien, junto a Aranguren anunció el tope a los aumentos. Los anuncios no bastaron y llegaron los amparos. La judicialización del tema prolongará el conflicto. En fin, un aprendizaje que le costará caro al Gobierno.
+﻿"Esta elección con Cristina, la ganaba el oficialismo otra vez"
+El periodista dio su opinión luego de que la mayoría del país haya elegido a Macri como presidente y defendió al oficialismo.
+"el gobierno hizo una elección excepcional" y que "puede sentirse ganador".
+"Ejercer el poder durante 12 años implica un desgaste, además sin la candidata natral. Es para que el gobierno se sienta moralmente ganador. Es decir, esta elección con Cristina, la ganaba el oficialismo otra vez".
+"Creo que se equivocó, tendría que haber permitido una interna entre Florencio Randazzo y Daniel Scioli".
+"Hubiese sido una competencia muy desgastadora".
+"Es un respiro para el gobierno" y que si los números hubieran sido al revés "hoy tendríamos un país en llamas, con denuncias por todos lados".
+﻿El anuncio de la Presidenta no es un fatalismo
+Llega un momento en el que hay que tomar decisiones. Ojalá que mucha gente siga el mismo camino que tomo. El mensaje de la Presidenta dice que el dólar no vale lo que están diciendo.
+Una sociedad que no puede comprar dólares me duele menos que ver cómo en los ‘90 tantas personas se quedaban sin trabajo.
+Tengo un repudio a los cacerolazos, estamos en un año donde hay medios de comunicación que están dispuestos a que el país se incendie, porque piensan que van a poder salir ganando.
+Siempre supe que perdía dinero comprando dólares, pero fui un desconocedor; era una cuestión cultural.
+El dólar siempre significó una pequeña seguridad para la clase media y quizá sigue siéndolo, pero si no se hubiese presentado esta coyuntura.
+El anuncio de la Presidenta no es un fatalismo.
+Cumpliré lo prometido y con mucho gusto.
+﻿Elegía del abecedario argentino Todos morimos y cualquiera se muere.
+No hay muerto ni muerte ajenas porque las campanas suenan por nosotros
+y la vida sin muerte no se llamaría vida.
+Pero el hombre que murió no pasó en vano
+no pasó pasando sino pisando la tierra
+Esta. La tierra que hoy lo entierra
+como quien contiene una semilla.
+No hay que llorar más que las lágrimas que la semilla necesita
+para no ahogarla. 
+No hay que recordar más que lo que la memoria necesita
+para no atosigarla Y no hay que dejar
+que lo que el muerto deja todavía caliente se enfríe
+sino que hay que seguir calentándolo con la misma llama.
+No es la letra K estúpidos: es el abecedario entero.
+Y lo que muere no muere si no lo matan
+la negación y el olvido.
+Se murió. ¿Y qué? Si todo lo que el muerto
+deja a su alrededor vivo -lo inasible y profundo,
+lo que excede y supera la finitud-sigue viviendo.
+Sigue viviendo.
+Solo la muerte sabe cuando pierde.
+﻿Elegía del abecedario argentino. Todos morimos y cualquiera se muere.
+No hay muerto ni muerte ajenas porque las campanas suenan por nosotros
+y la vida sin muerte no se llamaría vida.
+Pero el hombre que murió no pasó en vano
+no pasó pasando sino pisando la tierra
+Esta. La tierra que hoy lo entierra
+como quien contiene una semilla.
+No hay que llorar más que las lágrimas que la semilla necesita
+para no ahogarla.
+No hay que recordar más que lo que la memoria necesita
+para no atosigarla Y no hay que dejar
+que lo que el muerto deja todavía caliente se enfríe
+sino que hay que seguir calentándolo con la misma llama.
+No es la letra K estúpidos: es el abecedario entero.
+Y lo que muere no muere si no lo matan la negación y el olvido.
+Se murió. ¿Y qué? Si todo lo que el muerto
+deja a su alrededor vivo -lo inasible y profundo,
+lo que excede y supera la finitud- sigue viviendo.
+Sigue viviendo.
+Solo la muerte sabe cuando pierde.
+﻿Libertad  
+Si un medio consigue instalar que falta libertad sin decir para qué es que falta libertad, es un medio peligroso.
+ Entre otras banderas anoche apareció la del pedido de libertad.
+La única que falta es la libertad de Magnetto para hacer lo que quiera y, sin embargo lo hace, porque consigue estar por encima de la ley…
+Si hay un grupo que no le tiene miedo ni a la ley, que sabe sacar a la gente a la calle a pedir por él, estamos en un  círculo perfectamente dibujado.
+Hay libertad para salir a la calle a decir lo que se quiera, para decir en los medios lo que se quiera para opinar cada político como se le antoje.
+Si decenas de miles de personas salieron a mostrar su enojo contra un gobierno democrático y no hay un preso, ni un herido, la libertad que se pide no es la que la palabra menciona, la que se reclama es la de los grupos mediáticos dominantes que en nombre de la libertad quieren establecer una dictadura de los medios de los medios dominantes, es decir, de ellos mismos.
+La derecha liberal, la dictadura mediática, algún sector de la oposición que descree de su victoria en elecciones libres, quieren terminar con el gobierno eyectándolo del poder o logrando que se traicione y haga lo que el poder real quiere.
+﻿“Hay un desgaste natural en 12 años. Hay muchos que no toleran a Cristina, ni su modo de hablar, ni su modo de acomodar el micrófono, la ropa, o si se puso botox o no. El Gobierno no pudo desmontar el poder mediático hegemónico. El kirchnerismo va a tener que revisar muchas cosas si pierde. Si hay alguna falla está en la inteligencia de Cristina Kirchner, que es tan inteligente que considera que no necesita ni asesoramiento ni formar cuadros”, detalló el filósofo.
+Y siguió: “Yo no tomé ni un café con Cristina en sus ocho años de gobierno. Sí lo asesoré a Néstor en los dos primeros años. Después nos separamos, tuvimos puntos de vista distintos, no tan graves. Pero Cristina es brillante{\ldots} pero tiene el peligro de la brillantez”.
+Ante la consulta de si por eso mucha gente se cansó de ella, evaluó: “Cansó la inteligencia de una presidenta que te habla por cadena nacional casi todos los días y te demuestra que tiene una gran inteligencia, mientras vos asistís a ese espectáculo, impotente y pensando: “¡Qué bocho tiene esta mina, ya me tiene harto!”.
+﻿La Periodista Magdalena Ruiz Guiñazú estuvo invitada al programa “Los Leuco” que se emite por la señal de cable Todo Noticias.
+En un reportaje de algo más de 20 minutos Magdalena hablo sobre varios temas de la política argentina.
+Y cuando Alfredo Leuco le preguntó sobre la Presidenta, Cristina Kirchner, Magdalena dijo “Justamente ayer fue cuando la vi en pantalla hablando de los que se van y de los que no se van, tomándose de la frase aquella “Que se vayan todos”.
+“Yo creo que no era un giro literario, ella no tiene la menor intención de irse del poder, sea el que sea, obviamente ahora de afuera”.
+“Creo que a quien sea el nuevo Gobierno le va a hacer la vida imposible. Me llamó la atención porqué lo dijo con tanta bronca de tener que irse, pero bueno lo que cuenta acá es el país, no son nuestras historias personales”.
+Ante la pregunta de Diego Leuco de si ella la ve a Cristina enojada, Magdalena respondió “Muy, muy”.
+Y agregó “Es un personaje que cuando se escriba esta historia va a hacer interesante observarlo porque se acuerdan cuando en Harvard dijo, esto no es la matanza, ¿Como vas a decir una cosa tan ofensiva para tu propio país?”.
+“Yo estoy seguro que por otro lado ella debe querer mucho a su país, como ella dice, mi lugar en el mundo, etc. Pero tengo la sensación que es una persona que no mide sus palabras”. 
+﻿El circulo del odio
+Les doy aqui el link de una nota de Sirven, el de La Nación:
+http://www.lanacion.com.ar/1443153-los-efluvios-piromaniacos-de-los-chicos-de-la-barra
+Parece que fue a Punta del Este , le dio culpa y se mandó con un escrito, que solo si se lee se  puede creer.
+Tanto desprecio como el expresado allá no merecía una red que atrapara el articulo antes de publicar la ofensa gratuita.
+Por el contrario, La Nación lo publica con el destaque de sus mejores notas.
+Al leerla no faltaría quien se pregunte si han enloquecido.
+¿Por que fomentar el odio? Â¿Cómo es que se animan?
+Y por ahí viene el motivo mayor de tristeza.
+Porque debe haber un alto porcentaje de lectores que lo celebra.
+Se escribe para ellos, finalmente.
+El lector quiere eso y el articulista se lo da.
+Recibe aplausos y llamados de la misma gente, y el circulo se cierra con nuevas notas.
+En el terreno de la información sucede lo mismo. La sucesión de noticias desmentidas por los hechos, a veces al cabo de un tiempo, en otras de manera casi instantánea, lleva a considerar cómo en el circulo del odio que el punto de partida es un lector que dice â€œmentime que me gustaría.
+﻿Scioli dijo que la “etapa del desarrollo” no podría ser sin el legado de Néstor.
+El precandidato a presidente por el Frente Para la Victoria concedió una entrevista al matutino porteño en la que agradeció al ex presidente, y dijo que aspira a ser “un puente generacional”.
+El candidato presidencial por el Frente para la Victoria, Daniel Scioli, sostuvo que él hoy puede hablar "de una agenda para el desarrollo nacional" gracias a que Néstor Kirchner sacó "a la Argentina del infierno" y al desendeudamiento encarado como política central en el ciclo 2003-2015.
+"Este proyecto ha tenido y tiene etapas, ahora está preparado para la agenda del desarrollo nacional" señaló el gobernador bonaerense, quien destacó que eso no sería posible si el país estuviera como cuando el kirchnerismo asumió el poder en 2003.
+El aspirante al sillón de Rivadavia otorgó una entrevista al diario Clarín en la que habló de los "sólidos cimientos" que dejan los gobiernos de Néstor Kirchner y de Cristina Fernández de Kirchner, se mostró optimista respecto del futuro nacional y dijo que los argentinos "no quieren volver a empezar, ni un cambio, ni tirar todo por la borda".
+"Van a venir mejores resultados en este camino", explicó Scioli, quien dijo que aspira "a ser un puente generacional entre el pasado y futuro", y subrayó su convocatoria a otros sectores políticos y especialmente a los jóvenes. "No se pierdan esta oportunidad", les dijo.
+En ese plan, el gobernador convocó "a los radicales que no están identificados con una posición conservadora, a los socialistas, a los vecinalistas" porque su "agenda de trabajo" está por "encima de los partidos".
+"Yo digo que no vamos a ir a votar en ningún escenario de crisis sino en un país creciendo, con una herencia positiva”; y concluyó asegurando “estabilidad cambiaría”.
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+         \PY{n}{topic\PYZus{}names} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:\PYZgt{}2\PYZcb{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{i}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{words}\PY{p}{)}
+                        \PY{k}{for} \PY{n}{i}\PY{p}{,} \PY{n}{words} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{feature\PYZus{}names}\PY{p}{[}\PY{n}{sorting}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+         \PY{c+c1}{\PYZsh{} two column bar chart:}
+         \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+             \PY{n}{start} \PY{o}{=} \PY{n}{col} \PY{o}{*} \PY{l+m+mi}{50}
+             \PY{n}{end} \PY{o}{=} \PY{p}{(}\PY{n}{col} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{*} \PY{l+m+mi}{50}
+             \PY{n}{ax}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{barh}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{50}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{document\PYZus{}topics100}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{p}{[}\PY{n}{start}\PY{p}{:}\PY{n}{end}\PY{p}{]}\PY{p}{)}
+             \PY{n}{ax}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{50}\PY{p}{)}\PY{p}{)}
+             \PY{n}{ax}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}yticklabels}\PY{p}{(}\PY{n}{topic\PYZus{}names}\PY{p}{[}\PY{n}{start}\PY{p}{:}\PY{n}{end}\PY{p}{]}\PY{p}{,} \PY{n}{ha}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{left}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{va}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{top}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{ax}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{invert\PYZus{}yaxis}\PY{p}{(}\PY{p}{)}
+             \PY{n}{ax}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2000}\PY{p}{)}
+             \PY{n}{yax} \PY{o}{=} \PY{n}{ax}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{get\PYZus{}yaxis}\PY{p}{(}\PY{p}{)}
+             \PY{n}{yax}\PY{o}{.}\PY{n}{set\PYZus{}tick\PYZus{}params}\PY{p}{(}\PY{n}{pad}\PY{o}{=}\PY{l+m+mi}{130}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_60_0.pdf}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+%    \subsubsection{Summary and Outlook}\label{summary-and-outlook}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
