@@ -1,0 +1,184 @@
+\documentclass[a4paper,10pt]{article}
+
+%%%%%%%%%%%% PREÁMBULO %%%%%%%%%%%%%%%%%%%%%
+
+% Paquetes
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings}
+\usepackage[pdftex]{graphicx} % graficos
+\usepackage{multirow, array} % para las tablas
+\usepackage{float} % para usar [H]
+\usepackage{booktabs}
+\graphicspath{ {imagen/} }%En que carpeta estan las imagenes
+\usepackage{subcaption}
+\usepackage{caption}
+
+
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\usepackage{epstopdf}
+
+% Comandos
+
+
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Índice de fragmentos de código fuente}
+
+% Opciones
+
+\title{Descripción DataSet*}
+\author{Viviana Mercado}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este documento es una pequeña guía de la conformación conjunto DataSet de artículos periodísticos 
+\end{abstract}
+
+\tableofcontents
+\listoftables 	%Indices de Tablas
+\listoffigures 	%Indices de Figuras
+
+
+\section{Datos}
+
+En este trabajo, se centrará en un un conjunto de documentos periodísticos argentinos extraídos de blog de noticias, redacciones, libros. 
+
+Se ha generado un corpus de 200 documentos de 10 periodistas (5 oficialistas y 5 opositores) representándose los documentos con un enfoque de bolsa de términos (bag of terms) variándose en cada caso el tipo de término utilizado (n-gramas de palabras, n-gramas de caracteres, términos “lematizados”, términos “truncados”, etc.). 
+En cada caso se han utilizado distintos enfoques para el pesado de los términos como la ponderación binaría, ponderación tf-idf, etc. 
+En particular, han representado los documentos utilizando todas las características del sistema Language Inquiry Word Count (LIWC).
+
+Después del proceso de recopilación, y debido a la heterogénea naturaleza en las codificaciones de conjuntos de caracteres de textos recopilados (ASCII, UTF-8, ANSI e ISO-8859-1), el formato de los documentos fue unificado convirtiéndolos a la misma codificación.
+Se presenta el corpus del texto en español en una versión balanceada estandarizando el texto en UTF-8.
+
+\subsection{Recopilación de datos}
+Las versiones equilibradas poseen las siguientes características: 
+
+\begin{itemize}
+	\item Los Textos fueron escritos por hispanohablantes de Argentina 
+	\item Los textos “hablan” hacen hincapié en aspectos políticos.
+	\item Todos los documentos incluyen texto “formal” es decir, sin (o con una cantidad mínima de) errores tipográficos, contracciones, jergas (slangs), hipervínculos, etiquetas, figuras y emoticones.
+	\item Hay un mínimo de 18 y un máximo de 20 documentos periodísticos tomados desde blog, textos periodísticos, libros (archivo) por autor.
+	\item Para la detección de la orientación se dividió en 2 clases (oficialistas/opositores)
+	\item Igual número de periodistas masculinos y femeninos en cada categoría.
+ 
+\end{itemize}
+Después de realizar el proceso de recolección, todos los documentos fueron etiquetados manualmente teniendo en cuenta la información proporcionada por los datos revelados dentro del texto.
+
+	\begin{table}[htbp]
+	\centering
+	%\caption{Distribución de documentos de la versión balanceada }
+	\begin{tabular}{lrrrr}
+		\multicolumn{1}{c}{Autores (Docs) } & \multicolumn{1}{c}{Diarios} & \multicolumn{1}{c}{Blogs } & \multicolumn{1}{c}{Libros} & \multicolumn{1}{c}{Total} \\
+		\midrule
+		Oficialistas & 50    & 46    & 2     & 98 \\
+		Opositores & 60    & 36    & 2     & 98 \\
+		\bottomrule
+	\end{tabular}%
+	\label{tab:tabla1}%
+	\caption{Distribución de documentos de la versión balanceada }
+	\end{table}
+
+\subsection{Análisis}
+ Se presenta Tabla 2 donde muestra las características principales de ambas categorías (oficialistas /opositores) del corpus. Esto incluye el número total de palabras, oraciones, número de palabras únicas encontradas en todos Documentos (vocabulario) y el tamaño de cada versión (kilobytes)
+ 
+ \begin{table}[htbp]
+ 	\centering
+ 	 	\begin{tabular}{lrrrr}
+ 		\multicolumn{1}{c}{Autores (Docs)} & \multicolumn{1}{c}{Palabras} & \multicolumn{1}{c}{Oraciones} & \multicolumn{1}{c}{Vocabulario} & \multicolumn{1}{c}{Tamaño } \\
+ 		\midrule
+ 		Oficialistas & 113.016   &   2.197,58    &   7.804,05    & 1.133 \\
+ 		Opositores &  172.234     &    2.353,72   & 7.883,69      & 1.586 \\
+ 		\bottomrule
+ 	\end{tabular}%
+ 	\label{tab:tabla2}%
+\caption{Características del Corpus}
+ \end{table}%
+
+ En la Tabla 3, Figura 1 y 2 describen las características de palabras y oraciones en el corpus en la categoría oficialistas. 
+ 
+ \begin{table}[htbp]
+ 	\centering
+ 	\begin{tabular}{lcccc}
+	\cmidrule{2-5}  
+	  \multicolumn{1}{r}{} & \multicolumn{1}{l}{Promedio} & \multicolumn{1}{l}{Desv.Est.} & Máx.   & Mín. \\
+	\midrule
+		Palabras & 1757,49 & 4866,35 & 37069,00 & 126,00 \\
+		Oraciones &  24,02& 10,41 & 54,50 & 8,09 \\
+		\bottomrule
+	\end{tabular}%
+	\caption{\label{tab:tabla3} Distribución de Palabras y Oraciones de autores oficialistas}%
+\end{table}
+
+%%%%%
+% COLOCAR FIGURA 1
+%%%%%
+
+\begin{figure}%[H]
+	\begin{minipage}[b]{0.5\linewidth}
+	\centering
+	\includegraphics[width=\linewidth]{figura1pal_of.eps}
+	\caption{Palabras autores oficialistas}
+	\label{fig:figura1}
+	\end{minipage}
+	\hspace{0.2cm}
+\begin{minipage}[b]{0.5\linewidth}
+	\centering
+	\includegraphics[width=\linewidth]{figura2ora_of.eps}
+	\caption{Oraciones autores oficialistas}
+	\label{fig:figura1}
+\end{minipage}
+\hspace{0.5cm}
+
+\end{figure}
+\hspace{0.5cm}
+%%%%
+ En cambio, Tabla 4, Figuras 3 y 4 describen las características de palabras y oraciones en el corpus en la categoría opositores.
+%%%%
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{lcccc}
+	\cmidrule{2-5}  
+	\multicolumn{1}{r}{} & \multicolumn{1}{l}{PROMEDIO} & \multicolumn{1}{l}{DESV.EST.} & MÁX   & MÍN \\
+		\midrule
+	Palabras & 1153,22 & 679,36 & 3171,00 & 126,00 \\
+	Oraciones & 22,42 & 5,53 & 40,62 & 12,78 \\
+	\bottomrule
+	\end{tabular}%
+	\caption{\label{tab:tabla4}Distribución de Palabras y Oraciones de autores opositores}%
+\end{table}%
+\hspace{0.1cm}
+%%%%%
+%COLOCAR FIGURA 2
+%%%%%%
+\vspace{-0.5cm}
+\begin{figure}%[H]
+		\begin{minipage}[b]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{figura3pal_op.eps}
+		\caption{Palabras autores opositores}
+	\label{fig:figura3}
+		\end{minipage}
+	\hspace{0.2 cm}
+		\begin{minipage}[b]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{figura4ora_op.eps}
+		\caption{Oraciones autores opositores}
+		\label{fig:figura4}
+	\end{minipage}
+	\hspace{0.5cm}
+\end{figure}
+
+\newpage
+\subsection{Clases}
+
+De la combinación de los documento, se pueden derivar dos clases. Estos se identificaron como: oficialistas y opositor. En tablas 3 y 4, se muestra estadísticas las versiones para cada clase. Incluyen, para cada combinación (categoría), el número de de documentos, número total de palabras, número promedio de palabras y oraciones respectivamente, vocabulario (número de palabras diferentes) y tamaño (en KiloBytes). De la Tabla 3 podemos observar que en la versión equilibrada, los autores oficialistas usan más palabras, más oraciones y tienen un vocabulario más rico que las autores opositores.
+ 
+\end{document}
